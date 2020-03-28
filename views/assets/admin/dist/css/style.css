@@ -1,0 +1,37 @@
+:not(.layout-fixed) .main-sidebar {
+    height: inherit;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+}
+
+ul li ul li a i{
+	font-size: 0.8rem !important;
+}
+
+
+.card-body ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.card-body ul li{
+	list-style: none;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	width: 100px;
+}
+
+.card-body ul li i{
+	text-align: center;
+	width: 100%;
+	padding: 15px;
+	font-size: 2rem;
+	background-color: white;
+}
+
+.card-body ul li i:hover{
+	color: white;
+	background-color: #007bff;
+}
