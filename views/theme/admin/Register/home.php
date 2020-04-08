@@ -26,19 +26,17 @@
     <section class="content">
       <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Cadastro de Usuários!</h3>
+        <?=flash();?>
+        <div class="card">
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
-            </div>
+          <div class="card-header p-4 cad-head">
+            <h3 class="card-title">Cadastro de Usuários!</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-4">
+            <form method="post" class="form-horizontal" action="<?=$router->route("auth.register")?>">
+              <div class="row">
+              <div class="col-md-3">
                 
                <div class="card card-default card-outline">
                 <div class="card-body box-profile">
@@ -50,88 +48,90 @@
 
                   <p class="text-muted text-center">Esolha sua imagem</p>
 
-                  <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>
+                  <a href="#" class="btn btn-outline-primary btn-block btn-flat"><b>Editar</b></a>
                 </div>
                 <!-- /.card-body -->
               </div>
               </div>
               <!-- /.col -->
-              <div class="col-md-8">
-                <div class="form-group">
-                  <label>Nome:</label>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nome">
+              <div class="col-md-9">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" >Nome:</label>
+                  <div class="col-sm-10 input-group mb-3">
+                    <input type="text" class="form-control rounded-0" placeholder="Nome" id="name" name="name">
                   </div>
+                </div>
 
-                  <label>Sobrenome:</label>
-                  <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Sobrenome">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" >Sobrenome:</label>
+                  <div class="col-sm-10 input-group mb-3">
+                    <input type="text" class="form-control rounded-0" placeholder="Sobrenome" id="lastName" name="lastName">
                   </div>
-
-                  <label>Senha:</label>
-                  <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="******">
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Senha:</label>
+                  <div class="col-sm-10 input-group mb-3">
+                    <input type="password" class="form-control rounded-0" placeholder="******" placeholder="password" name="password">
                   </div>
-
-                  <label>E-mail:</label>
-                  <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="exemplo@gmail.com">
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">E-mail:</label>
+                  <div class="col-sm-10 input-group mb-3">
+                    <input type="email" class="form-control rounded-0" placeholder="exemplo@gmail.com" id="email" name="email">
                   </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="level">Nivel de Acesso</label>
+                  <div class="input-group col-sm-10 mb-3">
+                    <select class="select2" name="level" style="width: 100%;">
+                      <option value="3">Administrador</option>
+                      <option value="2">Cliente</option>
+                      <option value="1">Usuário</option>
+                    </select>
+                  </div>
+                </div>
 
-                  
-                  <div class="row">
-                    
-
-                    <div class="col-md-12 mb-3">
-                      <div class="input-group">
-                        <label for="state">
-                          Nivel de Acesso
+                <div class="form-group row">
+                  <label for="inputExperience" class="col-sm-2 col-form-label">Status</label>
+                  <div class="col-sm-10">
+                    <div class="col-md-6 mb-3">
+                      <div class="icheck-success d-inline mr-5">
+                        <input type="radio" id="active" name="status" checked="checked" value="1">
+                        <label for="active">
+                          Ativo
                         </label>
-                        <select class="select2" name="state" style="width: 100%;">
-                          <option value="3">Administrador</option>
-                          <option value="2">Cliente</option>
-                          <option value="1">Usuário</option>
-                        </select>
                       </div>
-                    </div>
-
-                    <div class="col-md-12 mb-3">
-                      <div class="form-group clearfix">
-                        <label>Status</label>
-                      <div class="row">
-                        <div class="col-md-12 mb-3">
-                          <div class="icheck-success d-inline">
-                            <input type="radio" id="radioPrimary1" name="r1" checked="checked">
-                            <label for="radioPrimary1">
-                              Ativo
-                            </label>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="icheck-danger d-inline">
-                          <input type="radio" id="radioPrimary2" name="r1">
-                          <label for="radioPrimary2">
+                      <div class="icheck-danger d-inline ">
+                          <input type="radio" id="inactive" name="status" value="2">
+                          <label for="inactive">
                             Inativo
                           </label>
                         </div>
-                        </div>
-                      </div>
                     </div>
-                    </div>         
                   </div>
-                  <label>Descrição</label>
-                  <textarea class="form-control" rows="3" placeholder="Algo sobre mim"></textarea>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Descrição</label>
+                  <div class="col-sm-10">
+                    <textarea class="col-md-12 form-control rounded-0" rows="3" placeholder="Algo sobre mim"></textarea>
+                  </div>
                 </div>
 
               </div>
             </div>
             <!-- /.row -->
+            <div class="card-footer">
+            <button type="submit" class="btn btn-outline-primary btn-flat">Cadastrar</button>
+            <button type="submit" class="btn btn-outline-secondary btn-flat">voltar</button>
+          </div>
+            </form>
           </div>
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <button type="submit" class="btn btn-default">voltar</button>
-          </div>
+          
         </div>
         <!-- /.card -->
       </div><!-- /.container-fluid -->

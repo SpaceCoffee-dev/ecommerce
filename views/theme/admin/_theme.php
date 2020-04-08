@@ -195,44 +195,45 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy" data-widget="treeview" role="menu" data-accordion="true">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
             <a href="<?=$router->route("app.home")?>" class="nav-link active">
-              <i class="nav-icon fad fa-house"></i>
+              <i class="nav-icon fad fa-box-open"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <?php if ($user->user_level >= 3): 
+          <?php 
             foreach ($module as $mod) :?>
-            <?php if (empty($mod->module_father_id)): ?>
+            <?php
+            if (empty($mod->module_father_id)): ?>
               <li class="nav-item has-treeview">
-            <a href="<?=(!empty($mod->module_link) ? $router->route("{$mod->module_link}") : '')?>" class="nav-link">
-              <i class="nav-icon fad <?=$mod->module_icon?>"></i>
-              <p>
-                <?=$mod->module_name;?>
-                <?=(empty($mod->module_father_id) ? '<i class="fas fa-angle-left right"></i>' : '')?>
-              </p>
-            </a>
-                <ul class="nav nav-treeview">
-                  <?php foreach ($submodule as $key): ?>
-                    <?php if ($key->module_father_id == $mod->module_id):?>
-                    <li class="nav-item">
-                      <a href="<?=(!empty($key->module_link) ? $router->route("{$key->module_link}") : '')?>" class="nav-link">
-                        <i class="fad <?=$key->module_icon?> nav-icon fa-2x"></i>
-                        <p><?=$key->module_name?></p>
-                      </a>
-                    </li>
-                  <?php endif; endforeach; ?>
-              </ul>
-          </li>
+                <a href="<?=(!empty($mod->module_link) ? $router->route("{$mod->module_link}") : '')?>" class="nav-link">
+                  <i class="nav-icon fad <?=$mod->module_icon?>"></i>
+                  <p>
+                    <?=$mod->module_name;?>
+                    <?=(empty($mod->module_father_id) ? '<i class="fas fa-angle-left right"></i>' : '')?>
+                  </p>
+                </a>
+                    <ul class="nav nav-treeview">
+                      <?php foreach ($submodule as $key): ?>
+                        <?php if ($key->module_father_id == $mod->module_id):?>
+                            <li class="nav-item">
+                              <a href="<?=(!empty($key->module_link) ? $router->route("{$key->module_link}") : '')?>" class="nav-link">
+                                <i class="fad <?=$key->module_icon?> nav-icon fa-2x"></i>
+                                <p><?=$key->module_name?></p>
+                              </a>
+                            </li>
+                          <?php endif ?>
+                      <?php endforeach; ?>
+                  </ul>
+              </li>
           <?php
           endif;
           endforeach; 
-          endif; 
           ?>
         </ul>
       </nav>
@@ -276,6 +277,8 @@
 <script src="<?=asset("admin/dist/js/adminlte.min.js");?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?=asset("admin/dist/js/demo.js");?>"></script>
+<!-- Custom Js -->
+<script src="<?=asset("admin/dist/js/custom.js");?>"></script>
 
   <?= $v->section("scripts"); ?>
 

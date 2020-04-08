@@ -25,6 +25,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <?=flash();?>
         <div class="card">
             <div class="card-header">
               <h3 class="card-title"><?=$users?> Usuário(s) registrados!</h3>
@@ -70,8 +71,8 @@
                     <td><?=$userss->user_email;?></td>
                     <td class="text-center py-0 align-middle">
                       <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fal fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fal fa-trash"></i></a>
+                        <a href="#" class="btn btn-outline-info"><i class="fal fa-pencil"></i></a>
+                        <a href="<?=$router->route("auth.remove", ['id'=>$userss->user_id])?>" class="btn btn-outline-danger" data-confirm='Tem certeza que deseja apagar este Usuário?'><i class="fal fa-trash" ></i></a>
                       </div>
                     </td>
                   </tr>
@@ -89,6 +90,25 @@
 
 </div>
 <!-- ./wrapper -->
+
+<!-- MODAL -->
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">  
+            <h4 class="modal-title">Excluir Usuário</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <p>Tem certeza que deseja excluir o Usuário?</p>
+          </div>
+          <div class="modal-footer">
+            <a type="button" class="btn btn-default" data-dismiss="modal">Cancelar</a>
+            <a type="button" class="btn btn-danger" id="data-confirm">Confirmar</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 <?php $v->start("scripts"); ?>

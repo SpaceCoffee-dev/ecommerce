@@ -25,19 +25,13 @@
       <div class="container-fluid">
         <div class="card card-default card-outline">
           <div class="card-header">
-            <h3 class="card-title">Icones</h3>
+            <h3 class="card-title">Font Awesome</h3>
           </div> <!-- /.card-body -->
           <div class="card-body">
-            <ul>
-              <li><i class="fad fa-abacus"></i> <span>abacus</span></li>
-              <li><i class="fad fa-acorn"></i> <span>acorn</span></li>
-              <li><i class="fad fa-ad"></i> <span>ad</span></li>
-              <li><i class="fad fa-address-book"></i> <span>address-book</span></li>
-              <li><i class="fad fa-address-card"></i> <span>address-card</span></li>
-              <li><i class="fad fa-adjust"></i> <span>adjust</span></li>
-              <li><i class="fad fa-adjust"></i> <span>adjust</span></li>
-            </ul>
-            
+            <blockquote>
+              <p>Com esse template você pode usar qualquer icone do FontAwesome!</p>
+              <a href="https://fontawesome.com/" target="_blank">FontAwesome - Pro</a> 
+            </blockquote> 
           </div><!-- /.card-body -->
         </div>
       </div><!-- /.container-fluid -->
